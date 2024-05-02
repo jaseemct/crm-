@@ -1,0 +1,96 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Font Awesome CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    color: white;
+  }
+  .card {
+    border: 6px solid rgb(5, 31, 160);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 70%;
+    box-shadow: 3px 3px 10px black;
+    background-color: black;
+    
+  }
+  .card-header {
+    background-color: black;
+    color: white;
+    
+    font-size: 34px;
+  }
+  .card-footer {
+    background-color: black;
+    color: white;
+    border-radius:15px;
+  }
+  .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  /* Media query for screen size 360x640 */
+  @media screen and (max-width: 360px) and (max-height: 640px) {
+    .card {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container-fluid mt-3 py-5" style="background-color: antiquewhite;">
+  <div class="row justify-content-center">
+    
+    <div class="col-md-6 p-0 m-0">
+      <div class="card m-auto">
+        <a class="navbar-brand text-center" href="#" style="font-size: 40px; color:white;"><i class="fa-brands fa-ubuntu" style="font-size: 40px; color:white;"></i> CRM</a>
+        <div class="card-header text-center">
+          Login
+        </div>
+        <div class="card-body ">
+          <form>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+          </form>
+        </div>
+        <div class="card-footer" style="border-radius:0px 0px 8px 8px;">
+          <div class="text-center">
+            <p class="mb-0">Don't have an account? <a href="#" style="color: #007bff;">Sign up</a></p>
+            
+            <p class="mb-0 mt-5">Sign up with:</p>
+            <a href="#" style="color: #d2e1f0;"><i class="fab fa-facebook fa-2x mr-3"></i></a>
+            <a href="#" style="color: #d2e1f0;"><i class="fab fa-twitter fa-2x mr-3"></i></a>
+            <a href="#" style="color: #d2e1f0;"><i class="fab fa-google fa-2x"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+{% endblock content %}
