@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        .navbar {
+            z-index: 9999;
+            background-color: black;
+        }
+
+        .dropdown-menu {
+            top: 100%; 
+            border: none; 
+        }
+
+        .navbar-vertical {
+            height: 100vh;
+            position: fixed;
+            top: 20px;
+            left: 0; 
+            width: 250px;
+            z-index: 1;
+            overflow-y: auto;
+            background-color: black;
+            border-right: 1px solid #111213;
+            transition: left 0.3s ease;
+            padding-top: 60px; 
+        }
+
+        @media (max-width: 768px) {
+            .navbar-vertical {
+                left: -250px; 
+            }
+            
+        }
+
+        .navbar-vertical.open {
+            left: 0; 
+            margin-top: 100px;
+        }
+
+
+        .navbar-vertical .nav-item {
+            background-color: black;
+            width: 100%;
+            margin-bottom: 10px;
+            margin-left: -20px;
+        }
+
+        .navbar-vertical .nav-item a {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            color: white;
+            transition: background-color 0.3s; 
+            border: 1px solid #dee2e6; 
+            margin-bottom: 10px; 
+            border-radius: 5px; 
+        }
+
+        .navbar-vertical .nav-item a:hover {
+            background-color: antiquewhite; 
+            color: black; 
+        }
+
+        .navbar-vertical .nav-item a i {
+            margin-right: 10px;
+        }
+
+        .navbar-brand {
+            cursor: pointer; 
+        }
+
+        .navbar-brand:hover {
+            text-decoration: none; 
+        }
+        li{
+            list-style-type: none;
+        }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            z-index: 9999; /* Ensure footer is above other content */
+        }
+        .con{
+            position: relative;
+            min-height: 100vh;
+        }
+        .con1{
+            padding-bottom: 2.5rem;
+        }
+        body{
+            background-color: white;
+            font-family: Arial, sans-serif;
+        }
+        .card{
+            height: 200px;
+            background-color: #f2f2f2;
+        }
+        .popup {
+            width: 98px;
+            height: 50px;
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            
+            z-index: 999;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Adding box shadow */
+        }
+        
+        .popup-content {
+            text-align: center;
+        }
+        
+        .close {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            color: #777; /* Changing the color of the close button */
+        }
+        
+        .close:hover {
+            color: #333; /* Changing the hover color of the close button */
+        }
+        
+        .popup i {
+            font-size: 48px; /* Changing the size of the folder icon */
+            color: black; /* Changing the color of the folder icon */
+        }
+        
+
+
+        .custom-card {
+            background-color: #F9F9F9;
+            border: 1px solid #E0E0E0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .custom-card:hover {
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-card img {
+            border-radius: 10px;
+            width: 100%;
+            height: 150px;
+            margin-bottom: 15px;
+        }
+
+        .custom-card .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .custom-card .card-text {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        @media (max-width: 768px) {
+            .opp{
+                margin-top: 130px;
+            }
+        }
+
+        
+        .chart-container {
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .chart-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .chart {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .bar {
+            width: 200px;
+            background-color:black;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        @media (max-width: 768px) {
+        .bar {
+        width: 50px; 
+        
+    }
+        
+}
+        .bar-label {
+            margin-top: 5px;
+            color: #666;
+        }
+
+        .bar-value {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffcc00;
+            height: 0;
+            transition: height 0.5s ease;
+            border-radius: 5px;
+        }
+
+        .chart:hover .bar-value {
+            height: 100%;
+        }
+        .connn{
+            padding-left: 250px;
+        }
+        @media (max-width: 768px) {
+    .connn {
+        padding-left: 0; 
+    }
+}
+    .wrapperr{
+        width: 90%;
+        height: auto;
+        margin: auto;
+        background-color: white;
+    }
+    h5{
+        color: #1C4E80;
+    }
+    .card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    background-color:black;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+}
+
+.icon-container i {
+    color: #fff;
+    font-size: 30px;
+}
+
+.card-title {
+    color:black;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.btn-secondary {
+    background-color: black;
+    border-color: #1C4E80;
+}
+
+.btn-secondary:hover {
+    background-color: #154167;
+    border-color: #154167;
+    color: #fff;
+}
+    </style>
+</head>
+<body>
+    
+    <nav  class="navbar navbar-dark  fixed-top">
+        <a class="navbar-brand" href="#" onclick="toggleNavbar()">CRM</a>
+    </nav>
+    <div class="wrapperr">
+    <nav class="navbar-vertical" id="navbarVertical">
+        <ul class="flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+            </li>
+    
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'dash' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'archive' %}"><i class="fas fa-tachometer-alt"></i> Archives</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=""><i class="fas fa-money-bill-wave"></i> Finance</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=""><i class="fas fa-chart-line"></i> Sales</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=""><i class="fas fa-users"></i> Human Resource</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=""><i class="fas fa-globe"></i> Websites</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=""><i class="fas fa-cogs"></i> Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=""><i class="fas fa-check-circle"></i> Productivity</a>
+            </li>
+        </ul>
+    </nav>
+<div class="connn pb-5">
+    <div style="margin-top: 100px;" class="container">
+        <a hidden href="{% url 'dash' %}" id="cardsLink">cards</a>
+
+        <h1 class="text-center">Archives</h1>
+        <div id="savedCardContainer" class="row"></div>
+    </div>
+
+
+</div>
+
+<script>
+    function handleCardsLinkClick(event) {
+        event.preventDefault();
+    }
+
+    document.getElementById("cardsLink").addEventListener("click", handleCardsLinkClick);
+
+    var savedHTMLArray = JSON.parse(sessionStorage.getItem("draggedHTMLArray"));
+    var savedCardContainer = document.getElementById("savedCardContainer");
+
+    
+    if (savedHTMLArray && savedHTMLArray.length > 0) {
+        savedHTMLArray.forEach(function(savedHTML) {
+            var tempContainer = document.createElement('div');
+            tempContainer.innerHTML = savedHTML;
+            var savedCard = tempContainer.firstChild;
+
+            var cardContainer = document.createElement('div');
+            cardContainer.className = 'col-lg-3 col-md-4 col-sm-6 mb-4';
+
+            
+            var card = document.createElement('div');
+            card.className = 'card h-100'; 
+            card.innerHTML = savedCard.innerHTML;
+
+            var cardBody = document.createElement('div');
+            cardBody.className = 'card-body d-flex flex-column'; 
+            cardBody.style.height = '100%'; 
+
+        
+            var undoButton = document.createElement('button');
+            undoButton.className = 'btn btn-danger mt-auto'; 
+            undoButton.innerHTML = 'Dis archive';
+
+           
+            undoButton.addEventListener('click', function(event) {
+                
+                cardContainer.parentNode.removeChild(cardContainer);
+                
+                var index = savedHTMLArray.indexOf(savedHTML);
+                if (index > -1) {
+                    savedHTMLArray.splice(index, 1);
+                    sessionStorage.setItem("draggedHTMLArray", JSON.stringify(savedHTMLArray));
+                }
+                
+                // window.open("{% url 'dash' %}", "_self");
+            });
+
+            
+            cardBody.appendChild(undoButton);
+
+            
+            card.appendChild(cardBody);
+
+            
+            cardContainer.appendChild(card);
+
+            
+            savedCardContainer.appendChild(cardContainer);
+        });
+    } else {
+        
+        savedCardContainer.innerHTML = "<div class='col text-center'>No archived messages available.</div>";
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+    function toggleNavbar() {
+        var navbar = document.getElementById('navbarVertical');
+        if (window.innerWidth <= 768) {
+            navbar.classList.toggle('open');
+            navbar.style.margin = '0';
+        }
+    }
+
+    // Close navbar on outside click
+    document.addEventListener("click", function(event) {
+        var navbar = document.getElementById('navbarVertical');
+        if (event.target.closest('.navbar-brand') === null && !navbar.contains(event.target)) {
+            navbar.classList.remove('open');
+        }
+    });
+
+</script>
+
+{% block content %}
+{% endblock %}
+
+<footer class="footer fixed-footer">
+    <div class="containe">
+        <span>Website made with CRM</span>
+    </div>
+</footer>
+
+</body>
+</html>
