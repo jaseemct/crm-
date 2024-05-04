@@ -107,24 +107,12 @@
             height: 200px;
             background-color: #f2f2f2;
         }
-        .popup {
-            width: 98px;
-            height: 50px;
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            
-            z-index: 999;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Adding box shadow */
-        }
+        
         
         .popup-content {
             text-align: center;
+            
+            
         }
         
         .close {
@@ -147,36 +135,35 @@
 
 
         .custom-card {
-            background-color: #F9F9F9;
-            border: 1px solid #E0E0E0;
+            background-color: #d4edda; /* Light gray background */
+            border: 3px solid #afb9ed; /* Light gray border */
             border-radius: 10px;
             margin-bottom: 20px;
             padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for both transform and box-shadow */
         }
-
+    
         .custom-card:hover {
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px); /* Lift card on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
         }
 
-        .custom-card img {
-            border-radius: 10px;
-            width: 100%;
-            height: 150px;
-            margin-bottom: 15px;
-        }
+        
 
         .custom-card .card-title {
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 10px;
+            color: rgb(8, 165, 160);
         }
 
         .custom-card .card-text {
+            
             font-size: 16px;
             line-height: 1.5;
             margin-bottom: 15px;
+            text-align: justify; /* Align text to the right */
         }
         @media (max-width: 768px) {
             .opp{
@@ -203,7 +190,7 @@
 
         .bar {
             width: 200px;
-            background-color:black;
+            background-color:rgb(8, 165, 160);
             border-radius: 5px;
             margin-bottom: 5px;
             position: relative;
@@ -266,7 +253,7 @@
     align-items: center;
     width: 70px;
     height: 70px;
-    background-color:black;
+    background-color:rgb(8, 165, 160);
     border-radius: 50%;
     margin: 0 auto 20px;
 }
@@ -339,8 +326,7 @@
 </nav>
 <div class="connn">
 <div style=" margin-bottom: 80px; margin-top: 120px;" class="container">
-    <h1 style="padding-top: 50px; color: black;" class="text-center mt-5">Welcome to the Dashboard</h1>
-    <p class="text-center mb-5 pb-5">This is where you can view important information and statistics about your CRM system.</p>
+
     
     <h2 style="margin-top: 50px; color: black;" class="text-center">Customer's Messages</h2>
 
@@ -379,55 +365,17 @@
     
         <div class="col-md-3">
             <div class="custom-card" draggable="true" ondragstart="drag(event)" id="dragData4">
-                
-                    <h5 class="card-title">Ryan</h5>
-                    <p class="card-text">"Hi , it was great speaking with you earlier. I wanted to follow up and see if you had any further questions about our product/service. Let me know if there's anything else I  assist you with!Let me know if there's anything else I can assist you with! Let me know if there's anything cakms"</p>
+               
+                <div class="card-body">
+                    <h5 class="card-title">Arya</h5>
+                    <p class="card-text">"Hi, we're constantly striving to improve our services, and your feedback is invaluable to us. Could you take a moment to share your thoughts on your recent experience with our team?"</p>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 
-    <div style="padding-bottom: 50px;" class="row mt-4">
-        <div class="col-md-3">
-            <div class="custom-card" draggable="true" ondragstart="drag(event)" id="dragData5">
-                
-                <div class="card-body">
-                    <h5 class="card-title">Jack</h5>
-                    <p class="card-text">"Hi, we're constantly striving to improve our services, and your feedback is invaluable to us. Could you take a moment to share your thoughts on your recent experience with our team?"</p>
-                </div>
-            </div>
-        </div>
-    
-        <div class="col-md-3">
-            <div class="custom-card" draggable="true" ondragstart="drag(event)" id="dragData6">
-                
-                <div class="card-body">
-                    <h5 class="card-title">Jones</h5>
-                    <p class="card-text">"Hi, we're constantly striving to improve our services, and your feedback is invaluable to us. Could you take a moment to share your thoughts on your recent experience with our team?"</p>
-                </div>
-            </div>
-        </div>
-    
-        <div class="col-md-3">
-            <div class="custom-card" draggable="true" ondragstart="drag(event)" id="dragData7">
-               
-                <div class="card-body">
-                    <h5 class="card-title">Maggie</h5>
-                    <p class="card-text">"Hi, we're constantly striving to improve our services, and your feedback is invaluable to us. Could you take a moment to share your thoughts on your recent experience with our team?"</p>
-                </div>
-            </div>
-        </div>
-    
-        <div class="col-md-3">
-            <div class="custom-card" draggable="true" ondragstart="drag(event)" id="dragData8">
-               
-                <div class="card-body">
-                    <h5 class="card-title">Smith</h5>
-                    <p class="card-text">"Hi, we're constantly striving to improve our services, and your feedback is invaluable to us. Could you take a moment to share your thoughts on your recent experience with our team?"</p>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     
     <div class="popup" id="popup">
         <div class="popup-content">
@@ -435,7 +383,15 @@
             <i class="fa-solid fa-box-archive" style="color: #143bff;"></i>
         </div>
     </div>  
-    <div style="margin-bottom: 80px;" class="row">
+
+<div class="container-fluid my-4">
+    <img src="https://www.mercuriusit.com/wp-content/uploads/Combo-Chart.gif" alt="" class="img-fluid">
+</div>
+<div class="container-fluid my-4">
+    <img src="https://cdn.dribbble.com/users/1623326/screenshots/3346162/chart_graph.gif" alt="" class="img-fluid w-100">
+</div>
+
+    <div style="margin-bottom: 80px;" class="row my-5 py-5">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
@@ -444,7 +400,7 @@
                     </div>
                     <h5 class="card-title">Total Sales</h5>
                     <p class="card-text">View the total number of sales made and track progress</p>
-                    <a href="#" class="btn btn-secondary">View Sales</a>
+                    
                 </div>
             </div>
         </div>
@@ -456,7 +412,7 @@
                     </div>
                     <h5 class="card-title">New Customers</h5>
                     <p class="card-text">See how many new customers have joined recently.</p>
-                    <a href="#" class="btn btn-secondary">View Customers</a>
+                    
                 </div>
             </div>
         </div>
@@ -468,12 +424,14 @@
                     </div>
                     <h5 class="card-title">Pending Tasks</h5>
                     <p class="card-text">Check out the tasks that are pending completion.</p>
-                    <a href="#" class="btn btn-secondary">View Tasks</a>
+                    
                 </div>
             </div>
         </div>
     </div>
-    
+    <div class="container-fluid my-5">
+        <img src="https://i.pinimg.com/originals/fe/b8/0e/feb80eb9f59d629306668d1edce3a0e2.gif" alt="" class="img-fluid w-100">
+    </div>
     <div class="row mt-4">
         <div class="col-md-8">
             <div class="card">
@@ -542,54 +500,38 @@
 </div>
 </div>
 <script>
-    
     function allowDrop(event) {
         event.preventDefault();
     }
 
-    
     function drag(event) {
-    var cardElement = event.target.closest('.custom-card');
-    event.dataTransfer.setData("text", cardElement.id);
-    
-    showPopup();
-}
-
-
-    
-    function closePopup() {
-        document.getElementById('popup').style.display = 'none';
+        var cardElement = event.target.closest('.custom-card');
+        event.dataTransfer.setData("text", cardElement.id);
     }
 
-    
     document.getElementById('popup').addEventListener('dragover', function (event) {
         event.preventDefault();
     });
 
-    
     document.getElementById('popup').addEventListener('drop', function (event) {
         event.preventDefault();
         var fetchData = event.dataTransfer.getData("text");
         var draggedElement = document.getElementById(fetchData);
-        
+
         draggedElement.parentNode.removeChild(draggedElement);
-        
+
         var draggedHTML = draggedElement.outerHTML;
         var savedHTMLArray = JSON.parse(sessionStorage.getItem("draggedHTMLArray")) || [];
         savedHTMLArray.push(draggedHTML);
         sessionStorage.setItem("draggedHTMLArray", JSON.stringify(savedHTMLArray));
-        
-        document.getElementById('popup').style.display = 'none';
     });
 
-    
     document.querySelectorAll("[draggable=true]").forEach(function (element) {
         element.addEventListener("dragend", function (event) {
             event.target.parentNode.removeChild(event.target);
         });
     });
 
-   
     var savedHTMLArray = JSON.parse(sessionStorage.getItem("draggedHTMLArray"));
 
     if (savedHTMLArray && savedHTMLArray.length > 0) {
@@ -601,91 +543,62 @@
         });
     }
 
-    
     var touchStartX, touchStartY, touchEndX, touchEndY;
+    var draggedElement;
 
-function touchStart(event) {
-    
-    touchStartX = event.touches[0].clientX;
-    touchStartY = event.touches[0].clientY;
-    
-    showPopup();
-   
-    draggedElement = event.target.closest('.custom-card');
-}
+    function touchStart(event) {
+        touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+        draggedElement = event.target.closest('.custom-card');
+    }
 
-function touchMove(event) {
-    
-    event.preventDefault();
-}
+    function touchMove(event) {
+        event.preventDefault();
+    }
 
-function touchEnd(event) {
-    
-    touchEndX = event.changedTouches[0].clientX;
-    touchEndY = event.changedTouches[0].clientY;
-    
-    if (Math.abs(touchEndX - touchStartX) < 10 && Math.abs(touchEndY - touchStartY) < 10) {
-        
-        event.target.click();
-    } else {
-        
-        if (draggedElement && draggedElement.parentNode) {
-            
-            draggedElement.parentNode.removeChild(draggedElement);
+    function touchEnd(event) {
+        touchEndX = event.changedTouches[0].clientX;
+        touchEndY = event.changedTouches[0].clientY;
 
-            
-            var savedHTMLArray = JSON.parse(sessionStorage.getItem("draggedHTMLArray")) || [];
-            savedHTMLArray.push(draggedElement.outerHTML);
-            sessionStorage.setItem("draggedHTMLArray", JSON.stringify(savedHTMLArray));
+        if (Math.abs(touchEndX - touchStartX) < 10 && Math.abs(touchEndY - touchStartY) < 10) {
+            event.target.click();
+        } else {
+            if (draggedElement && draggedElement.parentNode) {
+                draggedElement.parentNode.removeChild(draggedElement);
 
-            
-            draggedElement = null;
-            
-            hidePopup();
+                var savedHTMLArray = JSON.parse(sessionStorage.getItem("draggedHTMLArray")) || [];
+                savedHTMLArray.push(draggedElement.outerHTML);
+                sessionStorage.setItem("draggedHTMLArray", JSON.stringify(savedHTMLArray));
+
+                draggedElement = null;
+            }
         }
     }
-}
 
+    function renderCardsFromStorage() {
+        var savedHTMLArray = JSON.parse(sessionStorage.getItem("draggedHTMLArray")) || [];
+        savedHTMLArray.forEach(function (html) {
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+            document.body.appendChild(tempDiv.firstChild);
+        });
+    }
 
-function showPopup() {
-    document.getElementById('popup').style.display = 'block';
-}
-
-
-function hidePopup() {
-    document.getElementById('popup').style.display = 'none';
-}
-
-
-function renderCardsFromStorage() {
-    var savedHTMLArray = JSON.parse(sessionStorage.getItem("draggedHTMLArray")) || [];
-    savedHTMLArray.forEach(function (html) {
-        var tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
-        document.body.appendChild(tempDiv.firstChild);
+    document.querySelectorAll(".custom-card").forEach(function (element) {
+        element.addEventListener("touchstart", touchStart);
+        element.addEventListener("touchmove", touchMove);
+        element.addEventListener("touchend", touchEnd);
     });
-}
-
-
-document.querySelectorAll(".custom-card").forEach(function (element) {
-    element.addEventListener("touchstart", touchStart);
-    element.addEventListener("touchmove", touchMove);
-    element.addEventListener("touchend", touchEnd);
-});
-
-
-
-
 </script>
+
 <script>
     function toggleNavbar() {
-    var navbar = document.getElementById('navbarVertical');
-    if (window.innerWidth <= 768) {
-        navbar.classList.toggle('open');
-        navbar.style.margin = '0';
+        var navbar = document.getElementById('navbarVertical');
+        if (window.innerWidth <= 768) {
+            navbar.classList.toggle('open');
+            navbar.style.margin = '0';
+        }
     }
-}
-
 
     document.addEventListener("click", function(event) {
         var navbar = document.getElementById('navbarVertical');
@@ -693,8 +606,8 @@ document.querySelectorAll(".custom-card").forEach(function (element) {
             navbar.classList.remove('open');
         }
     });
-
 </script>
+
 
 <footer class="footer fixed-footer">
     <div class="containe">
