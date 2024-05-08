@@ -123,7 +123,7 @@
 
 
         }
-        
+
         .close {
             position:relative;
             top: 5px;
@@ -362,7 +362,7 @@
 
                 <div class="row mt-4">
                     <div class="col-md-3">
-                        <div class="custom-card" draggable="true" ondragstart="drag(event,'Jaseem')" id="dragData1">
+                        <div class="custom-card" draggable="true"  ondragstart="drag(event,'Jaseem')"  id="dragData1" data="Jaseem">
 
 
                             <div class="card-body">
@@ -374,7 +374,7 @@
                         </div>
                         <div class="popup" id="popup_Jaseem" name="popup">
                             <div class="popup-content">
-                                <span class="close" onclick="closePopup()">&times;</span>
+                                <span class="close" onclick="closePopup()"></span>
                                 <i class="fa-solid fa-box-archive" style="color: #143bff;"></i><br>
                                 add to archive
                             </div>
@@ -382,7 +382,7 @@
                     </div>
 
                     <div class="col-md-3">
-                        <div class="custom-card" draggable="true" ondragstart="drag(event,'Amal')" id="dragData2">
+                        <div class="custom-card" draggable="true"  ondragstart="drag(event,'Amal')" id="dragData2" data="Amal">
 
                             <div class="card-body">
                                 <h5 class="card-title">Amal</h5>
@@ -393,14 +393,14 @@
                         </div>
                         <div class="popup" id="popup_Amal">
                             <div class="popup-content">
-                                <span class="close" onclick="closePopup()">&times;</span>
+                                <span class="close" onclick="closePopup()"></span>
                                 <i class="fa-solid fa-box-archive" style="color: #143bff;"></i><br>
                                 add to archive
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="custom-card" draggable="true" ondragstart="drag(event,'Arya')" id="dragData3">
+                        <div class="custom-card" draggable="true" ondragstart="drag(event,'Arya')" id="dragData3" data="Arya">
 
                             <div class="card-body">
                                 <h5 class="card-title">Arya</h5>
@@ -411,7 +411,7 @@
                         </div>
                         <div class="popup" id="popup_Arya">
                             <div class="popup-content">
-                                <span class="close" onclick="closePopup()">&times;</span>
+                                <span class="close" onclick="closePopup()"></span>
                                 <i class="fa-solid fa-box-archive" style="color: #143bff;"></i><br>
                                 add to archive
                             </div>
@@ -421,7 +421,7 @@
 
 
                     <div class="col-md-3">
-                        <div class="custom-card" draggable="true" ondragstart="drag(event,'Anu')" id="dragData4">
+                        <div class="custom-card" draggable="true"  ondragstart="drag(event,'Anu')" id="dragData4" data="Anu">
 
                             <div class="card-body">
                                 <h5 class="card-title">Anu</h5>
@@ -432,7 +432,7 @@
                         </div>
                         <div class="popup" id="popup_Anu">
                             <div class="popup-content">
-                                <span class="close" onclick="closePopup()">&times;</span>
+                                <span class="close" onclick="closePopup()"></span>
                                 <i class="fa-solid fa-box-archive" style="color: #143bff;"></i><br>
                                 add to archive
                             </div>
@@ -571,6 +571,31 @@
         function allowDrop(event) {
             event.preventDefault();
         }
+        function handleTouchStart(event, divName) {
+            console.log('touch start', divName);
+
+            // Prevent the default touch behavior
+            event.preventDefault();
+
+            // Get the card element
+            var cardElement = event.target.closest('.custom-card');
+
+            // Show popup when touching a card
+            document.getElementById('popup_' + divName).style.display = 'block';
+
+            // Position the popup above the touched card
+            var popup = document.getElementById('popup_' + divName);
+            var rect = cardElement.getBoundingClientRect();
+            popup.style.top = (rect.top - popup.offsetHeight) + 'px';
+            popup.style.left = rect.left + 'px';
+
+            // Store the card element's ID or other necessary information
+            // for further touch event handling
+            event.target.touchData = {
+                cardElementId: cardElement.id,
+                popupId: 'popup_' + divName,
+            };
+        }
 
         function drag(event, divName) {
             var cardElement = event.target.closest('.custom-card');
@@ -581,6 +606,7 @@
 
             // Position popup above the dragged card
             var popup = document.getElementById('popup_' + divName);
+            console.log(popup);
             var rect = cardElement.getBoundingClientRect();
             popup.style.top = (rect.top - popup.offsetHeight) + 'px';
             popup.style.left = rect.left + 'px';
@@ -607,6 +633,7 @@
 
             // Hide popup after dropping a card
             document.getElementById(popupId).style.display = 'none';
+            console.log("reload..........");
             location.reload();
         }
 
@@ -659,6 +686,17 @@
 
         function touchMove(event) {
             event.preventDefault();
+            divName=event.target.parentElement.parentElement.getAttribute('data')
+            console.log(divName);
+            document.getElementById('popup_' + divName).style.display = 'block';
+
+            // Position popup above the dragged card
+            var popup = document.getElementById('popup_' + divName);
+            console.log(popup);
+            var cardElement = event.target.closest('.custom-card');
+            var rect = cardElement.getBoundingClientRect();
+            popup.style.top = (rect.top - popup.offsetHeight) + 'px';
+            popup.style.left = rect.left + 'px';
         }
 
         function touchEnd(event) {
@@ -669,6 +707,10 @@
                 event.target.click();
             } else {
                 if (draggedElement && draggedElement.parentNode) {
+                    popup=draggedElement.getAttribute('data')
+                    console.log(popup);
+                    var popup = document.getElementById('popup_' + popup);
+                    popup.style.display = 'none';
                     draggedElement.parentNode.removeChild(draggedElement);
 
                     var savedHTMLArray = JSON.parse(sessionStorage.getItem("draggedHTMLArray")) || [];
